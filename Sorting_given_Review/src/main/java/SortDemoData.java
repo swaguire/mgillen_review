@@ -1,3 +1,4 @@
+
 package main.java;
 
 // SortDemo.java     
@@ -41,6 +42,10 @@ public class SortDemoData  {
                         
                         if (n == 0 || n == 1) {
                         	n = 5;
+                        }
+                  
+                        if (n < 0) {
+                        	n = Math.abs(n);
                         }
                         
                         myArray = new Item[n];
