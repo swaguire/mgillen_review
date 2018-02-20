@@ -271,11 +271,13 @@ public final class SortAlgos {
                 vec[loBound] = vec[hiSwap];
                 vec[hiSwap] = pivotItem;
         
-                if (loBound < hiSwap-1)     // 2 or more items in 1st subvec
+                if (loBound < hiSwap-1) {     // 2 or more items in 1st subvec
                         quickSort(vec, loBound, hiSwap-1);
+                }
         
-                if (hiSwap+1 < hiBound)     // 2 or more items in 2nd subvec
+                if (hiSwap+1 < hiBound) {     // 2 or more items in 2nd subvec
                         quickSort(vec, hiSwap+1, hiBound);
+                }
         }
     
     
