@@ -23,46 +23,46 @@ public class SortDemoData  {
 
                 String tempStr = "";
                     
-                int n; // will be the length of myArray        
+                int arrayLength; // will be the length of myArray        
                 if (inputTokens.hasMoreTokens()) {
-                        n = inputTokens.countTokens(); 
+                        arrayLength = inputTokens.countTokens(); 
                 } else {
                         throw new NoSuchElementException();
                 }
 
                 // define the array of the right length n    
-                if (n == 1) { 
+                if (arrayLength == 1) { 
 
                         // interpret the next number as number of entries and 
                         // generate a random vector with entries 1 ... n
                         tempStr = inputTokens.nextToken(); 
-                        n =  Integer.valueOf(tempStr).intValue(); 
+                        arrayLength =  Integer.valueOf(tempStr).intValue(); 
                         // may throw NegativeArraySizeException
                         
-                        if (n == 0 || n == 1) {
-                        	n = 5;
+                        if (arrayLength == 0 || arrayLength == 1) {
+                        	arrayLength = 5;
                         }
                   
-                        if (n < 0) {
-                        	n = Math.abs(n);
+                        if (arrayLength < 0) {
+                        	arrayLength = Math.abs(arrayLength);
                         }
                         
-                        myArray = new Item[n];
-                        boolean[] tempArray = new boolean[n + 1];
+                        myArray = new Item[arrayLength];
+                        boolean[] tempArray = new boolean[arrayLength + 1];
                         RandomNumber randGen = new RandomNumber();
                         int randNr;
-                        for (int i = 0; i < n; i++) {
+                        for (int i = 0; i < arrayLength; i++) {
                                 do 
-                                        randNr = randGen.nextIntRand(1, n);
+                                        randNr = randGen.nextIntRand(1, arrayLength);
                                 while (tempArray[randNr]);                  
                                 tempArray[randNr] = true;
                                 myArray[i] = new Item(randNr);
                         }
                 } else {           
-                        Item [] array = new Item[n];
+                        Item [] array = new Item[arrayLength];
                         int count =0;
                         // read the n numbers into the array
-                        for (int i = 0; i < n; i++) {
+                        for (int i = 0; i < arrayLength; i++) {
                         	
 
                                 tempStr = result[i];
@@ -76,8 +76,8 @@ public class SortDemoData  {
 
                                 
                         }
-                        myArray = new Item[n-count];
-                        myArray = Arrays.copyOfRange(array, 0, n-count);
+                        myArray = new Item[arrayLength-count];
+                        myArray = Arrays.copyOfRange(array, 0, arrayLength-count);
                         
                         
                } 
