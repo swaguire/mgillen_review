@@ -10,7 +10,7 @@ import main.java.SortAlgos;
 import main.java.SortDemoData;
 
 class AlgoTest {
-
+	private final Item[] emptyArray = null;
     /**
      * sameSize checks that the given array and the output array have the same size
      */
@@ -33,10 +33,7 @@ class AlgoTest {
     @Test
     public void emptyArray() {
         assertThrows(NullPointerException.class,
-                ()->{
-                    Item[] myArray = null;
-                    SortAlgos.bubbleSort(myArray);
-                });
+                ()->SortAlgos.bubbleSort(emptyArray));
     }
 
     /**
