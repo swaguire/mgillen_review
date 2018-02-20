@@ -26,7 +26,7 @@ public final class SortAlgos {
                 int bottom;       // bottom for each pass        
                 for (bottom = 1; bottom < n; bottom++)  {
                         for (int i = n-1; i >= bottom; i--) {
-                                if (vec[i-1].key > vec[i].key) {
+                                if (vec[i-1].getKey() > vec[i].getKey()) {
                                         temp = vec[i-1];
                                         vec[i-1] = vec[i];
                                         vec[i] = temp;
@@ -62,7 +62,7 @@ public final class SortAlgos {
                                     // vec[minIndx] <= all
                                     // vec[0..i-1]
                                     // && i >= bottom+1
-                                if (vec[i].key < vec[minIndx].key) { 
+                                if (vec[i].getKey() < vec[minIndx].getKey()) { 
                                         minIndx = i; 
                                 }
                         }
@@ -85,7 +85,7 @@ public final class SortAlgos {
                 int currentPos, insPos; 
                 for (currentPos = 1; currentPos < n; currentPos++) {
                         insPos = _findInsPosition(vec, currentPos - 1, 
-                                        vec[currentPos].key);
+                                        vec[currentPos].getKey());
                         insertAtPosition(vec, insPos, currentPos);
                 }   
         }
@@ -103,13 +103,13 @@ public final class SortAlgos {
                 i = 0; j = range; // initialize lower index i and upper index j
                 do { 
                         k =  (i + j) / 2;  // choose k halfway between i and j
-                        if (x >= vec[k].key) { 
+                        if (x >= vec[k].getKey()) { 
                                 i = k + 1;   // update lower index i
                         } else {                 
                                 j = k - 1;   // update upper index j
                         }
                 } while (i <= j);
-                if (x >= vec[k].key) {
+                if (x >= vec[k].getKey()) {
                         index = k + 1;
                 } else  {                   
                         index = k;
@@ -170,7 +170,7 @@ public final class SortAlgos {
                 i = 0; j = 0;   
                 // merge copy1 and copy2 into  vec[left...right]
                 while (i < m && j < n) {
-                        if (copy1[i].key < copy2[j].key) {
+                        if (copy1[i].getKey() < copy2[j].getKey()) {
                                 vec[left+i+j] = copy1[i];
                                 i++;
                         } else {
@@ -229,7 +229,7 @@ public final class SortAlgos {
                 Item temp, pivotItem;
         
                 if (hiBound - loBound == 1) {         // Two items to sort
-                        if (vec[loBound].key > vec[hiBound].key) {
+                        if (vec[loBound].getKey() > vec[hiBound].getKey()) {
                                 temp = vec[loBound];
                                 vec[loBound] = vec[hiBound];
                                 vec[hiBound] = temp;
@@ -240,16 +240,16 @@ public final class SortAlgos {
                 pivotItem = vec[pivotIndex];       
                 vec[pivotIndex] = vec[loBound];
                 vec[loBound] = pivotItem;    
-                pivotKey = pivotItem.key; 
+                pivotKey = pivotItem.getKey(); 
                 loSwap = loBound + 1;
                 hiSwap = hiBound;
                 do {
-                        while (loSwap <= hiSwap && vec[loSwap].key <= pivotKey)
+                        while (loSwap <= hiSwap && vec[loSwap].getKey() <= pivotKey)
                             // INVARIANT (prior to test):
                             // All vec[loBound+1..loSwap-1]
                             // are <= pivot  &&  loSwap <= hiSwap+1
                                 loSwap++;
-                        while (vec[hiSwap].key > pivotKey)
+                        while (vec[hiSwap].getKey() > pivotKey)
                             // INVARIANT (prior to test):
                             //    All vec[hiSwap+1..hiBound]
                             //    are > pivot  &&  hiSwap >= loSwap-1
@@ -297,7 +297,7 @@ public final class SortAlgos {
                         // vec[2*top+1] is only child of vec[top]
                         child = 2*top+1;
                 } else {                  // 2 sons, determine bigger one
-                        if (vec[2*top+1].key > vec[2*top+2].key) {
+                        if (vec[2*top+1].getKey() > vec[2*top+2].getKey()) {
                                 child = 2*top+1;
                         } else {
                                 child = 2*top+2;
@@ -305,7 +305,7 @@ public final class SortAlgos {
                 }//endif
             
                 // check if exchange is necessary
-                if (vec[top].key < vec[child].key) {
+                if (vec[top].getKey() < vec[child].getKey()) {
                         temp = vec[top]; 
                         vec[top] = vec[child]; 
                         vec[child] = temp;
